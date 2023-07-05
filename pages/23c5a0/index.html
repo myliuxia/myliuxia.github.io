@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>常见设计模式 | 个人的博客</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="刘夏的个人博客">
+    <link rel="preload" href="/assets/css/0.styles.b2bcbf0f.css" as="style"><link rel="preload" href="/assets/js/app.61c6fabb.js" as="script"><link rel="preload" href="/assets/js/3.9f5480b8.js" as="script"><link rel="preload" href="/assets/js/32.1775271a.js" as="script"><link rel="preload" href="/assets/js/7.795a4e82.js" as="script"><link rel="prefetch" href="/assets/js/10.2d4ebb06.js"><link rel="prefetch" href="/assets/js/11.67c2c25e.js"><link rel="prefetch" href="/assets/js/12.760e412a.js"><link rel="prefetch" href="/assets/js/13.c9016c74.js"><link rel="prefetch" href="/assets/js/14.953cac88.js"><link rel="prefetch" href="/assets/js/15.3d5a8940.js"><link rel="prefetch" href="/assets/js/16.e7e70e6c.js"><link rel="prefetch" href="/assets/js/17.be0a4bfc.js"><link rel="prefetch" href="/assets/js/18.2330b269.js"><link rel="prefetch" href="/assets/js/19.ec5fe80e.js"><link rel="prefetch" href="/assets/js/20.d1bc18e4.js"><link rel="prefetch" href="/assets/js/21.5de2fed3.js"><link rel="prefetch" href="/assets/js/22.ff182f6b.js"><link rel="prefetch" href="/assets/js/23.bd68afd2.js"><link rel="prefetch" href="/assets/js/24.5894c309.js"><link rel="prefetch" href="/assets/js/25.788d04a2.js"><link rel="prefetch" href="/assets/js/26.b845a3ff.js"><link rel="prefetch" href="/assets/js/27.3a1f53c2.js"><link rel="prefetch" href="/assets/js/28.666436c9.js"><link rel="prefetch" href="/assets/js/29.a1693985.js"><link rel="prefetch" href="/assets/js/30.f20ffd28.js"><link rel="prefetch" href="/assets/js/31.562b6208.js"><link rel="prefetch" href="/assets/js/33.1e304896.js"><link rel="prefetch" href="/assets/js/4.f58d7f67.js"><link rel="prefetch" href="/assets/js/5.f80973b8.js"><link rel="prefetch" href="/assets/js/6.e5d08169.js"><link rel="prefetch" href="/assets/js/8.0aa59495.js"><link rel="prefetch" href="/assets/js/9.312aa46c.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.1a4ac135.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b2bcbf0f.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="header-wrapper"><div class="header-content"><a href="/" class="left router-link-active"><div class="logo-image"><img src="/avatar.png" alt="个人的博客"></div> <span class="logo-title">个人的博客</span></a> <div class="right"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <div><nav class="pc-nav-links"><div class="nav-item"><span exact="true" class="nav-link">首页</span></div><div class="nav-item"><span class="nav-link">分类</span></div><div class="nav-item"><span class="nav-link">标签</span></div><div class="nav-item"><span class="nav-link">关于</span></div><div class="nav-item"><span class="nav-link">归档</span></div> <!----></nav> <div class="mobile-nav"><div class="nav-icon"><i class="icon-toc"></i></div></div> <div class="nav-drawer"><ul class="drawer-menu-list"><li class="drawer-menu-item"><span exact="true" class="nav-link">首页</span></li><li class="drawer-menu-item"><span class="nav-link">分类</span></li><li class="drawer-menu-item"><span class="nav-link">标签</span></li><li class="drawer-menu-item"><span class="nav-link">关于</span></li><li class="drawer-menu-item"><span class="nav-link">归档</span></li></ul></div> <div class="nav-mask" style="display:none;"></div></div></div></div></header> <div class="theme-main"><div class="theme-main__inner post"><article itemscope="itemscope" itemtype="https://schema.org/BlogPosting"><header class="article__header"><h1 itemprop="name headline" class="post-title">
+          常见设计模式
+        </h1> <div class="post-meta"><div itemprop="publisher author" itemtype="http://schema.org/Person" itemscope="itemscope" class="post-meta-author"><i class="icon-author"></i> <a href="https://github.com/myliuxia" target="_blank">liuxia</a></div> <div class="post-meta__date"><i class="icon-calendar"></i> <time pubdate itemprop="datePublished" datetime="2021-04-23T14:04:56.000Z">
+      2021-04-23
+    </time></div> <div class="post-meta__cates"><i class="icon-cate"></i> <a href="/categories/技术/">
+      技术
+    </a></div> <!----></div></header> <div class="article-con"><div itemprop="articleBody" class="article-content content__default"><blockquote><p>总结一些前端项目中常见的设计模式
+</p></blockquote> <h2 id="一、工厂模式"><a href="#一、工厂模式" class="header-anchor">#</a> 一、工厂模式</h2> <blockquote><p>工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象，用工厂方法代替new操作的一种模式。</p></blockquote> <p><strong>特征：</strong><br>
+1、构造函数和创建者分离，对new操作进行封装<br>
+2、符合开放封闭原则</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 举个栗子</span>
+<span class="token comment">// 食品实例生成的详细过程</span>
+<span class="token keyword">class</span> <span class="token class-name">Food</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name <span class="token comment">// 食品</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>type <span class="token operator">=</span> type <span class="token comment">// 食品类型</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">desc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">我是</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">,属于</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>type<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">类型</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">FoodFactory</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ES6中静态方法不会被实例调用,可以被类调用</span>
+  <span class="token keyword">static</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 创建一种食品实例</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Food</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> type<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 工厂开始生产食品实例了</span>
+FoodFactory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token string">'核桃'</span><span class="token punctuation">,</span> <span class="token string">'坚果'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">desc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 我是核桃, 属于坚果类型</span>
+FoodFactory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token string">'旺仔'</span><span class="token punctuation">,</span> <span class="token string">'饮品'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">desc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 我是旺仔, 属于饮品类型</span>
+<span class="token comment">// 这样我们就可以 生成出我们想要的食品, 只要你给我们 一个名称和类型</span>
+</code></pre></div><h2 id="二、单例模式"><a href="#二、单例模式" class="header-anchor">#</a> 二、单例模式</h2> <blockquote><p>保证一个类仅有一个实例，并提供一个访问它的全局访问点。</p></blockquote> <p><strong>特征：</strong>
+1、单例模式的主要思想就是，实例如果已经创建，则直接返回</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span>
+  <span class="token comment">// js模拟</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'login...'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 给类挂载一个静态方法, 只有一个</span>
+<span class="token comment">// 自执行函数: 只是为了将变量保存在 函数的作用域中, 避免污染而已</span>
+Singleton<span class="token punctuation">.</span>singleInstance <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 通过闭包实现: 类似通过一个全局变量来存储这个实例</span>
+  <span class="token keyword">let</span> instance<span class="token punctuation">;</span>  <span class="token comment">// 保存创建好的实例</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>instance<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 如果没有创建, 就创建一个</span>
+      instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> instance
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// 通过调用静态方法来创建单实例</span>
+<span class="token keyword">let</span> single11 <span class="token operator">=</span> Singleton<span class="token punctuation">.</span><span class="token function">singleInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> single22 <span class="token operator">=</span> Singleton<span class="token punctuation">.</span><span class="token function">singleInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// 通过调用类 初始化的实例</span>
+<span class="token keyword">let</span> single33 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>single11 <span class="token operator">===</span> single22<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// ture</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>single11 <span class="token operator">===</span> single33<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+</code></pre></div><h2 id="三、观察者模式-发布订阅模式"><a href="#三、观察者模式-发布订阅模式" class="header-anchor">#</a> 三、观察者模式/发布订阅模式</h2> <h3 id="_1、观察者模式"><a href="#_1、观察者模式" class="header-anchor">#</a> 1、观察者模式</h3> <blockquote><p>观察者模式 其实就是一个目标对象（Subject），维护一系列依赖与他的对象（Obsever），当目标对象（Subject）状态发生改变自动通知它们（Oberver）。</p></blockquote> <p>模式逻辑入下图：</p> <p><img src="/image/observer.png" alt="观察者模式逻辑图"></p> <p>代码实现：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 目标对象</span>
+<span class="token keyword">class</span> <span class="token class-name">Subject</span><span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// 观察者列表</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>observers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 添加观察者</span>
+  <span class="token function">addObserver</span><span class="token punctuation">(</span><span class="token parameter">observer</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>observers<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>observer<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 删除观察者</span>
+  <span class="token function">removeObserver</span><span class="token punctuation">(</span><span class="token parameter">observer</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> index <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>observers<span class="token punctuation">.</span><span class="token function">findIndex</span><span class="token punctuation">(</span><span class="token parameter">o</span> <span class="token operator">=&gt;</span> o <span class="token operator">===</span> observer<span class="token punctuation">)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>o <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>observers<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 通知</span>
+  <span class="token function">notify</span><span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>observers<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">o</span><span class="token operator">=&gt;</span>o<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 观察者</span>
+<span class="token keyword">class</span> <span class="token class-name">Observer</span><span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 自定义的更新方法</span>
+  <span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">'执行更新操作！'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 创建目标对象、观察者</span>
+<span class="token keyword">let</span> sub <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Subject</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> ob1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Observer</span><span class="token punctuation">(</span><span class="token string">'观察者1'</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> ob2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Observer</span><span class="token punctuation">(</span><span class="token string">'观察者2'</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 订阅 观察者 </span>
+sub<span class="token punctuation">.</span><span class="token function">addObserver</span><span class="token punctuation">(</span>ob1<span class="token punctuation">)</span>
+sub<span class="token punctuation">.</span><span class="token function">addObserver</span><span class="token punctuation">(</span>ob2<span class="token punctuation">)</span>
+
+<span class="token comment">// 目标发布通知</span>
+sub<span class="token punctuation">.</span><span class="token function">notify</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 删除 观察者订阅</span>
+sub<span class="token punctuation">.</span><span class="token function">removeObserver</span><span class="token punctuation">(</span>ob1<span class="token punctuation">)</span>
+
+<span class="token comment">// 再次发布通知</span>
+sub<span class="token punctuation">.</span><span class="token function">notify</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre></div><h3 id="_2、发布订阅模式"><a href="#_2、发布订阅模式" class="header-anchor">#</a> 2、发布订阅模式</h3> <blockquote><p>发布-订阅模式，就是一个发布者对象（Publisher）通过一个事件通道（Event Channel）发布指定的事件，通知多个订阅该事件的订阅者对象（Subscriber）。</p></blockquote> <p>模式逻辑入下图：</p> <p><img src="/image/publish_subscribe.png" alt="发布-订阅模式逻辑图"></p> <p>代码实现：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 发布-订阅类</span>
+<span class="token keyword">class</span> <span class="token class-name">PublishSubscribe</span><span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// 事件列表</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>_events <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> 
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 发布事件</span>
+  <span class="token function">$emit</span><span class="token punctuation">(</span><span class="token parameter">topic<span class="token punctuation">,</span> arg</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>_events<span class="token punctuation">[</span>topic<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>_events<span class="token punctuation">[</span>topic<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">fn</span> <span class="token operator">=&gt;</span> <span class="token function">fn</span><span class="token punctuation">(</span>arg<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 订阅</span>
+  <span class="token function">$on</span><span class="token punctuation">(</span><span class="token parameter">topic<span class="token punctuation">,</span> fn</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>_events<span class="token punctuation">[</span>topic<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>_events<span class="token punctuation">[</span>topic<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>_events<span class="token punctuation">[</span>topic<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>fn<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 取消订阅</span>
+  <span class="token function">$off</span><span class="token punctuation">(</span><span class="token parameter">topic<span class="token punctuation">,</span>fn</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>_events<span class="token punctuation">[</span>topic<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">let</span> index <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_events<span class="token punctuation">[</span>topic<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">findIndex</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=&gt;</span> e <span class="token operator">===</span> fn<span class="token punctuation">)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>index <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>_events<span class="token punctuation">[</span>topic<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token keyword">delete</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_events<span class="token punctuation">[</span>topic<span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 创建发布-订阅实例</span>
+<span class="token keyword">let</span> pubSub <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PublishSubscribe</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// 订阅 'log' 事件</span>
+pubSub<span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span><span class="token string">'log'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'log1'</span><span class="token punctuation">,</span>msg<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+pubSub<span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span><span class="token string">'log'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'log2'</span><span class="token punctuation">,</span>msg<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">function</span> <span class="token function">consoleLog</span><span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'log3'</span><span class="token punctuation">,</span>msg<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+pubSub<span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span><span class="token string">'log'</span><span class="token punctuation">,</span>consoleLog<span class="token punctuation">)</span>
+
+<span class="token comment">// 订阅 error 事件</span>
+pubSub<span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span><span class="token string">'error'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'error'</span><span class="token punctuation">,</span>msg<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 发布事件</span>
+pubSub<span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">'log'</span><span class="token punctuation">,</span><span class="token string">'输出日志'</span><span class="token punctuation">)</span>
+pubSub<span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">'error'</span><span class="token punctuation">,</span><span class="token string">'报错啦'</span><span class="token punctuation">)</span>
+<span class="token comment">// 控制台打印：</span>
+<span class="token comment">// log1 输出日志</span>
+<span class="token comment">// log2 输出日志</span>
+<span class="token comment">// log3 输出日志</span>
+<span class="token comment">// error 报错啦</span>
+
+<span class="token comment">// 取消单个订阅</span>
+pubSub<span class="token punctuation">.</span><span class="token function">$off</span><span class="token punctuation">(</span><span class="token string">'log'</span><span class="token punctuation">,</span> consoleLog<span class="token punctuation">)</span>
+
+<span class="token comment">// 再次发布事件</span>
+pubSub<span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">'log'</span><span class="token punctuation">,</span><span class="token string">'再次输出日志'</span><span class="token punctuation">)</span>
+<span class="token comment">// 控制台打印：</span>
+<span class="token comment">// log1 输出日志</span>
+<span class="token comment">// log2 输出日志</span>
+
+<span class="token comment">// 取消指定类型的所有订阅</span>
+pubSub<span class="token punctuation">.</span><span class="token function">$off</span><span class="token punctuation">(</span><span class="token string">'log'</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 再次发布事件</span>
+pubSub<span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">'log'</span><span class="token punctuation">,</span><span class="token string">'输出日志'</span><span class="token punctuation">)</span> <span class="token comment">// 无打印内容</span>
+</code></pre></div><h3 id="_3、两种模式之间的差异"><a href="#_3、两种模式之间的差异" class="header-anchor">#</a> 3、两种模式之间的差异</h3> <ul><li>Observer模式，观察者直接订阅内容改变的事件，定义一个对多的依赖关系</li> <li>Publish/Subscribe模式，通过一个事件通道关联发布者和订阅者，发布者与订阅者不存在直接依赖关系。</li></ul></div></div> <div class="article-footer"><ul class="post-tag"><li class="post-tag__item"><a href="/tags/JavaScript"><span># JavaScript</span></a></li></ul> <div class="post-operate"><a href="/pages/4dc309/" class="post-operate__prev">函数柯里化</a> <a href="/pages/cc68db/" class="post-operate__next">kr-print-designer 打印模板设计组件</a></div></div></article></div></div> <svg style="display:none;"><symbol id="theme-icon-auto" viewBox="0 0 32 32"><path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM4 16c0-6.627 5.373-12 12-12v24c-6.627 0-12-5.373-12-12z"></path></symbol> <symbol id="theme-icon-sun" viewBox="0 0 32 32"><path d="M16 26c1.105 0 2 0.895 2 2v2c0 1.105-0.895 2-2 2s-2-0.895-2-2v-2c0-1.105 0.895-2 2-2zM16 6c-1.105 0-2-0.895-2-2v-2c0-1.105 0.895-2 2-2s2 0.895 2 2v2c0 1.105-0.895 2-2 2zM30 14c1.105 0 2 0.895 2 2s-0.895 2-2 2h-2c-1.105 0-2-0.895-2-2s0.895-2 2-2h2zM6 16c0 1.105-0.895 2-2 2h-2c-1.105 0-2-0.895-2-2s0.895-2 2-2h2c1.105 0 2 0.895 2 2zM25.899 23.071l1.414 1.414c0.781 0.781 0.781 2.047 0 2.828s-2.047 0.781-2.828 0l-1.414-1.414c-0.781-0.781-0.781-2.047 0-2.828s2.047-0.781 2.828 0zM6.101 8.929l-1.414-1.414c-0.781-0.781-0.781-2.047 0-2.828s2.047-0.781 2.828 0l1.414 1.414c0.781 0.781 0.781 2.047 0 2.828s-2.047 0.781-2.828 0zM25.899 8.929c-0.781 0.781-2.047 0.781-2.828 0s-0.781-2.047 0-2.828l1.414-1.414c0.781-0.781 2.047-0.781 2.828 0s0.781 2.047 0 2.828l-1.414 1.414zM6.101 23.071c0.781-0.781 2.047-0.781 2.828 0s0.781 2.047 0 2.828l-1.414 1.414c-0.781 0.781-2.047 0.781-2.828 0s-0.781-2.047 0-2.828l1.414-1.414z"></path> <path d="M16 8c-4.418 0-8 3.582-8 8s3.582 8 8 8c4.418 0 8-3.582 8-8s-3.582-8-8-8zM16 21c-2.761 0-5-2.239-5-5s2.239-5 5-5 5 2.239 5 5-2.239 5-5 5z"></path></symbol> <symbol id="theme-icon-moon" viewBox="0 0 18 18"><path d="M7.246 3.255c-0.251 0.828-0.322 1.71-0.198 2.597 0.366 2.63 2.455 4.723 5.080 5.089 0.282 0.040 0.568 0.060 0.85 0.060 0.599 0 1.184-0.087 1.742-0.257-0.674 2.215-2.642 3.926-4.973 4.21-0.254 0.031-0.51 0.047-0.762 0.047-1.713 0-3.349-0.738-4.486-2.024-1.152-1.304-1.669-2.987-1.457-4.739 0.284-2.335 1.992-4.307 4.204-4.982zM8.985 1c-0.362 0-0.731 0.024-1.104 0.075-3.543 0.48-6.388 3.364-6.82 6.92-0.592 4.867 3.184 9.005 7.924 9.005 0.33 0 0.665-0.020 1.003-0.062 3.549-0.433 6.428-3.283 6.907-6.833 0.052-0.383 0.076-0.761 0.075-1.134-0.002-0.583-0.482-0.972-0.996-0.972-0.209 0-0.424 0.065-0.614 0.207-0.665 0.498-1.489 0.793-2.383 0.793-0.188 0-0.38-0.013-0.574-0.040-1.732-0.242-3.137-1.649-3.378-3.385-0.155-1.115 0.149-2.156 0.751-2.963 0.415-0.657 0.025-1.609-0.764-1.612-0.009 0-0.018 0-0.028 0v0z"></path></symbol> <symbol id="theme-icon-palette" viewBox="0 0 1024 1024"><path d="M745.984 512q25.984 0 45.013333-18.005333t18.986667-45.994667-18.986667-45.994667-45.013333-18.005333-45.013333 18.005333-18.986667 45.994667 18.986667 45.994667 45.013333 18.005333zM617.984 342.016q25.984 0 45.013333-18.986667t18.986667-45.013333-18.986667-45.013333-45.013333-18.986667-45.013333 18.986667-18.986667 45.013333 18.986667 45.013333 45.013333 18.986667zM406.016 342.016q25.984 0 45.013333-18.986667t18.986667-45.013333-18.986667-45.013333-45.013333-18.986667-45.013333 18.986667-18.986667 45.013333 18.986667 45.013333 45.013333 18.986667zM278.016 512q25.984 0 45.013333-18.005333t18.986667-45.994667-18.986667-45.994667-45.013333-18.005333-45.013333 18.005333-18.986667 45.994667 18.986667 45.994667 45.013333 18.005333zM512 128q157.994667 0 271.018667 100.010667t112.981333 242.005333q0 88.021333-63.018667 150.016t-150.997333 61.994667l-73.984 0q-27.989333 0-45.994667 18.986667t-18.005333 45.013333q0 22.016 16 41.984t16 43.989333q0 27.989333-18.005333 45.994667t-45.994667 18.005333q-160 0-272-112t-112-272 112-272 272-112z" p-id="10529"></path></symbol> </svg></div><div class="global-ui"><div class="float-menu-wrap"><!----> <div class="float-menu__list"><span class="icon-up"></span> <span class="theme-mode-setting"><svg class="theme-icon theme-icon-sun"><use xlink:href="#theme-icon-sun"></use></svg></span> <!----> <span class="icon-toc"></span> <span class="icon-search"></span></div> <div class="float-menu"><svg width="100%" height="100%" class="float-menu__progress"><circle stroke-dasharray="0% 301.59289474462014%" stroke="currentcolor" stroke-width="2%" fill="none" r="48%" cx="50%" cy="50%"></circle></svg> <div class="float-menu__dot"></div></div></div><div class="theme-search" style="display:none;"><div class="theme-search__inner"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <a class="icon-exit"></a></div></div></div></div>
+    <script src="/assets/js/app.61c6fabb.js" defer></script><script src="/assets/js/3.9f5480b8.js" defer></script><script src="/assets/js/32.1775271a.js" defer></script><script src="/assets/js/7.795a4e82.js" defer></script>
+  </body>
+</html>

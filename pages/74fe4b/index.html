@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vite 简介及常规配置 | 个人的博客</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="刘夏的个人博客">
+    <link rel="preload" href="/assets/css/0.styles.b2bcbf0f.css" as="style"><link rel="preload" href="/assets/js/app.61c6fabb.js" as="script"><link rel="preload" href="/assets/js/3.9f5480b8.js" as="script"><link rel="preload" href="/assets/js/22.ff182f6b.js" as="script"><link rel="preload" href="/assets/js/7.795a4e82.js" as="script"><link rel="prefetch" href="/assets/js/10.2d4ebb06.js"><link rel="prefetch" href="/assets/js/11.67c2c25e.js"><link rel="prefetch" href="/assets/js/12.760e412a.js"><link rel="prefetch" href="/assets/js/13.c9016c74.js"><link rel="prefetch" href="/assets/js/14.953cac88.js"><link rel="prefetch" href="/assets/js/15.3d5a8940.js"><link rel="prefetch" href="/assets/js/16.e7e70e6c.js"><link rel="prefetch" href="/assets/js/17.be0a4bfc.js"><link rel="prefetch" href="/assets/js/18.2330b269.js"><link rel="prefetch" href="/assets/js/19.ec5fe80e.js"><link rel="prefetch" href="/assets/js/20.d1bc18e4.js"><link rel="prefetch" href="/assets/js/21.5de2fed3.js"><link rel="prefetch" href="/assets/js/23.bd68afd2.js"><link rel="prefetch" href="/assets/js/24.5894c309.js"><link rel="prefetch" href="/assets/js/25.788d04a2.js"><link rel="prefetch" href="/assets/js/26.b845a3ff.js"><link rel="prefetch" href="/assets/js/27.3a1f53c2.js"><link rel="prefetch" href="/assets/js/28.666436c9.js"><link rel="prefetch" href="/assets/js/29.a1693985.js"><link rel="prefetch" href="/assets/js/30.f20ffd28.js"><link rel="prefetch" href="/assets/js/31.562b6208.js"><link rel="prefetch" href="/assets/js/32.1775271a.js"><link rel="prefetch" href="/assets/js/33.1e304896.js"><link rel="prefetch" href="/assets/js/4.f58d7f67.js"><link rel="prefetch" href="/assets/js/5.f80973b8.js"><link rel="prefetch" href="/assets/js/6.e5d08169.js"><link rel="prefetch" href="/assets/js/8.0aa59495.js"><link rel="prefetch" href="/assets/js/9.312aa46c.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.1a4ac135.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b2bcbf0f.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="header-wrapper"><div class="header-content"><a href="/" class="left router-link-active"><div class="logo-image"><img src="/avatar.png" alt="个人的博客"></div> <span class="logo-title">个人的博客</span></a> <div class="right"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <div><nav class="pc-nav-links"><div class="nav-item"><span exact="true" class="nav-link">首页</span></div><div class="nav-item"><span class="nav-link">分类</span></div><div class="nav-item"><span class="nav-link">标签</span></div><div class="nav-item"><span class="nav-link">关于</span></div><div class="nav-item"><span class="nav-link">归档</span></div> <!----></nav> <div class="mobile-nav"><div class="nav-icon"><i class="icon-toc"></i></div></div> <div class="nav-drawer"><ul class="drawer-menu-list"><li class="drawer-menu-item"><span exact="true" class="nav-link">首页</span></li><li class="drawer-menu-item"><span class="nav-link">分类</span></li><li class="drawer-menu-item"><span class="nav-link">标签</span></li><li class="drawer-menu-item"><span class="nav-link">关于</span></li><li class="drawer-menu-item"><span class="nav-link">归档</span></li></ul></div> <div class="nav-mask" style="display:none;"></div></div></div></div></header> <div class="theme-main"><div class="theme-main__inner post"><article itemscope="itemscope" itemtype="https://schema.org/BlogPosting"><header class="article__header"><h1 itemprop="name headline" class="post-title">
+          Vite 简介及常规配置
+        </h1> <div class="post-meta"><!----> <div class="post-meta__date"><i class="icon-calendar"></i> <time pubdate itemprop="datePublished" datetime="2023-03-20T09:38:21.000Z">
+      2023-03-20
+    </time></div> <div class="post-meta__cates"><i class="icon-cate"></i> <a href="/categories/技术/">
+      技术
+    </a></div> <!----></div></header> <div class="article-con"><div itemprop="articleBody" class="article-content content__default"><blockquote><p>Vite作为一款构建工具，大家都知道它很快，那它为什么很快，相比于webpack有哪些不同？今天咱们就一起来了解下Vite
+</p></blockquote> <h1 id="vite-简介"><a href="#vite-简介" class="header-anchor">#</a> Vite 简介</h1> <h2 id="什么是构建工具"><a href="#什么是构建工具" class="header-anchor">#</a> 什么是构建工具</h2> <p>大家都知道浏览器只支持 Html、CSS、JavaScript，但一个企业级项目可能会用到各种各样的前端技术，如 Less、Sass、TS、Vue组件、语法降级、体积优化等，这时候我们就需要相应的工具去处理这些内容：</p> <ul><li>使用 less-loader / sass-loader 处理 less / sass</li> <li>使用 babel 将 es 的新语法转换为旧版浏览器认识的语法</li> <li>使用 uglifyjs 将我们的代码压缩成体积更小的文件</li> <li>使用 vue-complier 将 vue 组件模板转换为 render 函数</li></ul> <p>我们可以手动把代码挨个处理一遍，但这样效率非常低，当我们稍微修改一点代码，这个流程又要重新走一遍，非常麻烦。有个神奇的东西，可以把以上工具集成到一起，整个流程交给它自动处理。而且当代码发生变化时，自动帮我们重新走一遍，这个东西就叫做构建工具。当然构建工具做的事情远不止于此，比如：</p> <ul><li>模块化开发支持：支持直接从 node_modules 里引入代码</li> <li>提高项目性能：压缩文件、代码分割</li> <li>优化开发体验：热更新、跨域问题</li></ul> <p>等等</p> <p>构建工具减轻了我们的心智负担，让我们不用关心我们写的代码如何在浏览器运行，只需要关心代码怎么写就可以了。市面上主流的构建工具有 Webpack、Vite、gulp、esbuild、Rollup、Parcel 等等。</p> <h2 id="vite-与-webpack-启动过程"><a href="#vite-与-webpack-启动过程" class="header-anchor">#</a> Vite 与 Webpack 启动过程</h2> <p>当项目体积越来越庞大时，构建工具需要处理的代码量呈指数级增长，包含数千个模块的项目也是相当普遍。类似 Webpack 的构建工具就会遇到性能瓶颈：通常需要很长时间，甚至几分钟项目才能启动起来。热更新（HMR）也可能需几秒，甚至十几秒。</p> <p><strong>Webpack 先递归分析各模块依赖关系-构建依赖图谱，然后进行打包，再启动本地服务器。</strong> 而且 Webpack 支持多种模块化规范，比如 CommonJS 、ES-Module ，一开始就要统一模块化代码，将所有的依赖全部处理一遍。</p> <p>整个流程如下图:</p> <p><img src="/image/webpack-dev.png" alt="webpack打包过程"></p> <p>那么 Vite 为什么能解决这个问题呢？</p> <ul><li>底层语言。Vite 使用 esbuild 预构建依赖。esbuild 使用 Go 编写，比用 JS 编写的打包器预构建依赖快 10-100 倍。</li> <li>先启动服务器，再按需请求模块并编译。Vite 利用的是现代浏览器本身支持 ES-Module 这个特性，直接向依赖的模块发出请求。Vite 启动时不需要分析模块之间的依赖关系，也不用打包，项目越大，优势越明显。</li></ul> <p>Vite 的启动过程如下图:
+<img src="/image/vite-esm.png" alt="Vite启动过程"></p> <p>这样大家应该看得出来 Vite 为什么快了吧！</p> <h1 id="vite-常见配置项"><a href="#vite-常见配置项" class="header-anchor">#</a> Vite 常见配置项</h1> <h2 id="resolve-alias"><a href="#resolve-alias" class="header-anchor">#</a> resolve.alias</h2> <p>定义路径别名也是我们常用的一个功能，我们通常会给 src 定义一个路径别名：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// vite.config.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span>
+<span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  resolve<span class="token operator">:</span> <span class="token punctuation">{</span>
+    alias<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">'@'</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'./src'</span><span class="token punctuation">)</span> <span class="token comment">// 路径别名</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>也可以使用插件，自动给src和src下所有的文件夹定义路径别名：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// vite.config.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ViteAliases <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./node_modules/vite-aliases'</span> <span class="token comment">// 通过名称引入会报错，可能是插件问题</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token function">ViteAliases</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>相应的路劲别名如下：</p> <div class="language-rust extra-class"><pre class="language-rust"><code>src <span class="token punctuation">-&gt;</span> <span class="token operator">@</span>
+assets <span class="token punctuation">-&gt;</span> <span class="token operator">@</span>assets
+components <span class="token punctuation">-&gt;</span> <span class="token operator">@</span>components
+router <span class="token punctuation">-&gt;</span> <span class="token operator">@</span>router
+stores <span class="token punctuation">-&gt;</span> <span class="token operator">@</span>stores
+views <span class="token punctuation">-&gt;</span> <span class="token operator">@</span>views
+</code></pre></div><h2 id="resolve-extensions"><a href="#resolve-extensions" class="header-anchor">#</a> resolve.extensions</h2> <p>导入时想要省略的扩展名列表。默认值为 ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'] 。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// vite.config.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span>
+<span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  resolve<span class="token operator">:</span> <span class="token punctuation">{</span>
+    extensions<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'.js'</span><span class="token punctuation">,</span> <span class="token string">'.ts'</span><span class="token punctuation">,</span> <span class="token string">'.json'</span><span class="token punctuation">]</span> <span class="token comment">// 导入时想要省略的扩展名列表</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>注意：不建议忽略自定义导入类型的扩展名（例如：.vue），因为它会影响 IDE 和类型支持。</p> <h2 id="css-preprocessoroptions"><a href="#css-preprocessoroptions" class="header-anchor">#</a> css.preprocessorOptions</h2> <p>传递给 CSS 预处理器的配置选项，这些配置会传递到预处理器的执行参数中去。例如，在 scss 中定义一个全局变量：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// vite.config.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span> <span class="token comment">// 使用 defineConfig 工具函数获取类型提示：</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  css<span class="token operator">:</span> <span class="token punctuation">{</span>
+    preprocessorOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      scss<span class="token operator">:</span> <span class="token punctuation">{</span>
+        additionalData<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">$primaryColor: #007edc;</span><span class="token template-punctuation string">`</span></span> <span class="token comment">// 全局变量</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+</code></pre></div><p>我们也可以定义一个全局变量文件，然后再引入这个文件：</p> <div class="language-scss extra-class"><pre class="language-scss"><code><span class="token comment">// src/assets/styles/variables.scss</span>
+<span class="token property"><span class="token variable">$primaryColor</span></span><span class="token punctuation">:</span> orange<span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$baseFontSize</span></span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
+</code></pre></div><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// vite.config.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  css<span class="token operator">:</span> <span class="token punctuation">{</span>
+    preprocessorOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      scss<span class="token operator">:</span> <span class="token punctuation">{</span>
+        additionalData<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">@import '/src/assets/styles/variables.scss';</span><span class="token template-punctuation string">`</span></span> <span class="token comment">// 引入全局变量文件</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>这样在 .scss 文件或 .vue 文件中就可以使用这些变量了。</p> <h2 id="css-postcss"><a href="#css-postcss" class="header-anchor">#</a> css.postcss</h2> <p>PostCSS 也是用来处理 CSS 的，只不过它更像是一个工具箱，可以添加各种插件来处理 CSS 。像浏览器样式兼容问题、浏览器适配等，都可以通过 PostCSS 来解决。</p> <p>Vite 对 PostCSS 有良好的支持，我们只需要安装相应的插件就可以了。如移动端使用 postcss-px-to-viewport 对不同设备进行布局适配：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span>
+<span class="token keyword">import</span> postcssPxToViewport <span class="token keyword">from</span> <span class="token string">'postcss-px-to-viewport'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  css<span class="token operator">:</span> <span class="token punctuation">{</span>
+    postcss<span class="token operator">:</span> <span class="token punctuation">{</span>
+      plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token comment">// viewport 布局适配</span>
+        <span class="token function">postcssPxToViewport</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          viewportWidth<span class="token operator">:</span> <span class="token number">375</span> <span class="token comment">// UI设计稿的宽度</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>这样我们书写的 px 单位就会转为 vw 或 vh ，很轻松地解决了适配问题。</p> <h2 id="optimizedeps-force"><a href="#optimizedeps-force" class="header-anchor">#</a> optimizeDeps.force</h2> <p>是否开启强制依赖预构建。node_modules 中的依赖模块构建过一次就会缓存在 node_modules/.vite/deps 文件夹下，下一次会直接使用缓存的文件。而有时候我们想要修改依赖模块的代码，做一些测试或者打个补丁，这时候就要用到强制依赖预构建。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  optimizeDeps<span class="token operator">:</span> <span class="token punctuation">{</span>
+    force<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token comment">// 强制进行依赖预构建</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>除了这个方法，我们还可以通过删除 .vite 文件夹或运行 npx vite --force 来强制进行依赖预构建。</p> <h2 id="server"><a href="#server" class="header-anchor">#</a> server</h2> <ul><li>host，指定开发服务器监听的某个IP地址，如果是设置为​​0.0.0.0​​或者true，那就是默认监听所有的地址。</li> <li>port，开发服务器端口号</li> <li>strictPort，设置为true的时候，遇到端口号被占用了，就会直接退出，</li> <li>https，是否开启HTTPS</li> <li>open，自动在浏览器中开启应用程序</li> <li>proxy，请求路径的代理，通常我们使用它来处理跨域
+配置如下：</li></ul> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  server<span class="token operator">:</span> <span class="token punctuation">{</span>
+    port<span class="token operator">:</span> <span class="token number">80</span><span class="token punctuation">,</span>
+    host<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    open<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    proxy<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">'/dev-api'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        target<span class="token operator">:</span> <span class="token string">'http://10.200.12.253:8080'</span><span class="token punctuation">,</span>
+        changeOrigin<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">rewrite</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">p</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> p<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^\/dev-api</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span> 
+      <span class="token comment">// 正则表达式写法：http://localhost:8080/fallback/ -&gt; http://jsonplaceholder.typicode.com/</span>
+      <span class="token string">'^/fallback/.*'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        target<span class="token operator">:</span> <span class="token string">'http://jsonplaceholder.typicode.com'</span><span class="token punctuation">,</span>
+        changeOrigin<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">rewrite</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">path</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> path<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^\/fallback</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token comment">// 代理 websockets 或 socket.io 写法：ws://localhost:8080/socket.io -&gt; ws://localhost:5174/socket.io</span>
+      <span class="token string">'/socket.io'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        target<span class="token operator">:</span> <span class="token string">'ws://localhost:5174'</span><span class="token punctuation">,</span>
+        ws<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="base"><a href="#base" class="header-anchor">#</a> base</h2> <p>开发或生产环境服务的公共基础路径。可以是以下几种值：</p> <ul><li>绝对 URL 路径，例如 /dev/</li> <li>完整的 URL，例如 https://dev.com/</li> <li>空字符串或 ./（用于嵌入形式的开发）</li></ul> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// vite.config.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  base<span class="token operator">:</span> <span class="token string">'/dev/'</span> <span class="token comment">// 开发或生产环境服务的公共基础路径</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="build-outdir"><a href="#build-outdir" class="header-anchor">#</a> build.outdir</h2> <p>指定打包文件的输出目录。默认值为 dist ，当 dist 被占用或公司有统一命名规范时，可进行调整。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// vite.config.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  build<span class="token operator">:</span> <span class="token punctuation">{</span>
+    outDir<span class="token operator">:</span> <span class="token string">'build'</span> <span class="token comment">// 打包文件的输出目录</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+</code></pre></div><h2 id="build-assetsdir"><a href="#build-assetsdir" class="header-anchor">#</a> build.assetsDir</h2> <p>指定生成静态资源的存放目录。默认值为 assets ，可根据需要进行调整。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// vite.config.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  build<span class="token operator">:</span> <span class="token punctuation">{</span>
+    assetsDir<span class="token operator">:</span> <span class="token string">'static'</span> <span class="token comment">// 静态资源的存放目录</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+</code></pre></div><h2 id="build-assetsinlinelimit"><a href="#build-assetsinlinelimit" class="header-anchor">#</a> build.assetsInlineLimit</h2> <p>图片转 base64 编码的阈值。为防止过多的 http 请求，Vite 会将小于此阈值的图片转为 base64 格式，可根据实际需求进行调整。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// vite.config.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  build<span class="token operator">:</span> <span class="token punctuation">{</span>
+    assetsInlineLimit<span class="token operator">:</span> <span class="token number">4096</span> <span class="token comment">// 图片转 base64 编码的阈值</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+</code></pre></div><h2 id="plugins"><a href="#plugins" class="header-anchor">#</a> plugins</h2> <p>插件相信大家都不陌生了。我们可以使用官方插件，也可以社区插件。如使用 @vitejs/plugin-vue 提供 Vue3 单文件组件的支持。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span>
+<span class="token keyword">import</span> vue <span class="token keyword">from</span> <span class="token string">'@vitejs/plugin-vue'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token function">vue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+</code></pre></div><p>更多社区插件，大家可以查看 awesome-vite 。</p></div></div> <div class="article-footer"><ul class="post-tag"><li class="post-tag__item"><a href="/tags/vite"><span># vite</span></a></li></ul> <div class="post-operate"><a href="/pages/fa89ca/" class="post-operate__prev">JavaScript基础——语法和API</a> <!----></div></div></article></div></div> <svg style="display:none;"><symbol id="theme-icon-auto" viewBox="0 0 32 32"><path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM4 16c0-6.627 5.373-12 12-12v24c-6.627 0-12-5.373-12-12z"></path></symbol> <symbol id="theme-icon-sun" viewBox="0 0 32 32"><path d="M16 26c1.105 0 2 0.895 2 2v2c0 1.105-0.895 2-2 2s-2-0.895-2-2v-2c0-1.105 0.895-2 2-2zM16 6c-1.105 0-2-0.895-2-2v-2c0-1.105 0.895-2 2-2s2 0.895 2 2v2c0 1.105-0.895 2-2 2zM30 14c1.105 0 2 0.895 2 2s-0.895 2-2 2h-2c-1.105 0-2-0.895-2-2s0.895-2 2-2h2zM6 16c0 1.105-0.895 2-2 2h-2c-1.105 0-2-0.895-2-2s0.895-2 2-2h2c1.105 0 2 0.895 2 2zM25.899 23.071l1.414 1.414c0.781 0.781 0.781 2.047 0 2.828s-2.047 0.781-2.828 0l-1.414-1.414c-0.781-0.781-0.781-2.047 0-2.828s2.047-0.781 2.828 0zM6.101 8.929l-1.414-1.414c-0.781-0.781-0.781-2.047 0-2.828s2.047-0.781 2.828 0l1.414 1.414c0.781 0.781 0.781 2.047 0 2.828s-2.047 0.781-2.828 0zM25.899 8.929c-0.781 0.781-2.047 0.781-2.828 0s-0.781-2.047 0-2.828l1.414-1.414c0.781-0.781 2.047-0.781 2.828 0s0.781 2.047 0 2.828l-1.414 1.414zM6.101 23.071c0.781-0.781 2.047-0.781 2.828 0s0.781 2.047 0 2.828l-1.414 1.414c-0.781 0.781-2.047 0.781-2.828 0s-0.781-2.047 0-2.828l1.414-1.414z"></path> <path d="M16 8c-4.418 0-8 3.582-8 8s3.582 8 8 8c4.418 0 8-3.582 8-8s-3.582-8-8-8zM16 21c-2.761 0-5-2.239-5-5s2.239-5 5-5 5 2.239 5 5-2.239 5-5 5z"></path></symbol> <symbol id="theme-icon-moon" viewBox="0 0 18 18"><path d="M7.246 3.255c-0.251 0.828-0.322 1.71-0.198 2.597 0.366 2.63 2.455 4.723 5.080 5.089 0.282 0.040 0.568 0.060 0.85 0.060 0.599 0 1.184-0.087 1.742-0.257-0.674 2.215-2.642 3.926-4.973 4.21-0.254 0.031-0.51 0.047-0.762 0.047-1.713 0-3.349-0.738-4.486-2.024-1.152-1.304-1.669-2.987-1.457-4.739 0.284-2.335 1.992-4.307 4.204-4.982zM8.985 1c-0.362 0-0.731 0.024-1.104 0.075-3.543 0.48-6.388 3.364-6.82 6.92-0.592 4.867 3.184 9.005 7.924 9.005 0.33 0 0.665-0.020 1.003-0.062 3.549-0.433 6.428-3.283 6.907-6.833 0.052-0.383 0.076-0.761 0.075-1.134-0.002-0.583-0.482-0.972-0.996-0.972-0.209 0-0.424 0.065-0.614 0.207-0.665 0.498-1.489 0.793-2.383 0.793-0.188 0-0.38-0.013-0.574-0.040-1.732-0.242-3.137-1.649-3.378-3.385-0.155-1.115 0.149-2.156 0.751-2.963 0.415-0.657 0.025-1.609-0.764-1.612-0.009 0-0.018 0-0.028 0v0z"></path></symbol> <symbol id="theme-icon-palette" viewBox="0 0 1024 1024"><path d="M745.984 512q25.984 0 45.013333-18.005333t18.986667-45.994667-18.986667-45.994667-45.013333-18.005333-45.013333 18.005333-18.986667 45.994667 18.986667 45.994667 45.013333 18.005333zM617.984 342.016q25.984 0 45.013333-18.986667t18.986667-45.013333-18.986667-45.013333-45.013333-18.986667-45.013333 18.986667-18.986667 45.013333 18.986667 45.013333 45.013333 18.986667zM406.016 342.016q25.984 0 45.013333-18.986667t18.986667-45.013333-18.986667-45.013333-45.013333-18.986667-45.013333 18.986667-18.986667 45.013333 18.986667 45.013333 45.013333 18.986667zM278.016 512q25.984 0 45.013333-18.005333t18.986667-45.994667-18.986667-45.994667-45.013333-18.005333-45.013333 18.005333-18.986667 45.994667 18.986667 45.994667 45.013333 18.005333zM512 128q157.994667 0 271.018667 100.010667t112.981333 242.005333q0 88.021333-63.018667 150.016t-150.997333 61.994667l-73.984 0q-27.989333 0-45.994667 18.986667t-18.005333 45.013333q0 22.016 16 41.984t16 43.989333q0 27.989333-18.005333 45.994667t-45.994667 18.005333q-160 0-272-112t-112-272 112-272 272-112z" p-id="10529"></path></symbol> </svg></div><div class="global-ui"><div class="float-menu-wrap"><!----> <div class="float-menu__list"><span class="icon-up"></span> <span class="theme-mode-setting"><svg class="theme-icon theme-icon-sun"><use xlink:href="#theme-icon-sun"></use></svg></span> <!----> <span class="icon-toc"></span> <span class="icon-search"></span></div> <div class="float-menu"><svg width="100%" height="100%" class="float-menu__progress"><circle stroke-dasharray="0% 301.59289474462014%" stroke="currentcolor" stroke-width="2%" fill="none" r="48%" cx="50%" cy="50%"></circle></svg> <div class="float-menu__dot"></div></div></div><div class="theme-search" style="display:none;"><div class="theme-search__inner"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <a class="icon-exit"></a></div></div></div></div>
+    <script src="/assets/js/app.61c6fabb.js" defer></script><script src="/assets/js/3.9f5480b8.js" defer></script><script src="/assets/js/22.ff182f6b.js" defer></script><script src="/assets/js/7.795a4e82.js" defer></script>
+  </body>
+</html>
