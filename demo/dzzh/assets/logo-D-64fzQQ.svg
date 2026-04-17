@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <!-- 背景色 - 浅灰蓝色，明显区别于深蓝系统 -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#64748b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#475569;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- 边框渐变 - 亮银色 -->
+    <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e2e8f0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#cbd5e1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- 山峰渐变 -->
+    <linearGradient id="mountainGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#86efac;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4ade80;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22c55e;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- 危险警示渐变 -->
+    <linearGradient id="warningGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fcd34d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fbbf24;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- 雷达扫描渐变 -->
+    <radialGradient id="radarGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#22d3ee;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0.3" />
+    </radialGradient>
+
+    <!-- 数据流动渐变 -->
+    <linearGradient id="dataGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:0" />
+      <stop offset="50%" style="stop-color:#93c5fd;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:0" />
+    </linearGradient>
+
+    <!-- 强发光效果 -->
+    <filter id="strongGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 中等发光 -->
+    <filter id="mediumGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 外阴影效果 -->
+    <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feFlood flood-color="rgba(0,0,0,0.4)"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 背景圆 - 浅灰蓝色，明显区别于深蓝系统 -->
+  <circle cx="200" cy="200" r="195" fill="url(#bgGradient)" filter="url(#dropShadow)"/>
+
+  <!-- 外边框 - 亮银色 -->
+  <circle cx="200" cy="200" r="195" fill="none" stroke="url(#borderGradient)" stroke-width="5"/>
+
+  <!-- 内边框装饰线 -->
+  <circle cx="200" cy="200" r="185" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-dasharray="8 4"/>
+
+  <!-- 雷达扫描圆环 -->
+  <circle cx="200" cy="200" r="165" fill="none" stroke="#0ea5e9" stroke-width="2" opacity="0.8" filter="url(#mediumGlow)"/>
+  <circle cx="200" cy="200" r="135" fill="none" stroke="#0ea5e9" stroke-width="2" opacity="0.6"/>
+  <circle cx="200" cy="200" r="105" fill="none" stroke="#0ea5e9" stroke-width="2" opacity="0.4"/>
+
+  <!-- 雷达扫描扇形 -->
+  <path d="M 200 200 L 200 65 A 135 135 0 0 1 308 125 Z" fill="url(#radarGradient)" opacity="0.7" filter="url(#mediumGlow)">
+    <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="4s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- 山峰层 - 远景 -->
+  <path d="M 60 290 Q 105 195 155 235 Q 185 195 225 215 Q 265 175 340 290 L 340 340 L 60 340 Z" 
+        fill="#3b82f6" opacity="0.6" filter="url(#mediumGlow)"/>
+
+  <!-- 山峰层 - 中景 -->
+  <path d="M 85 290 Q 135 210 175 250 Q 205 210 245 230 Q 285 190 315 290 L 315 340 L 85 340 Z" 
+        fill="#2563eb" opacity="0.7" filter="url(#mediumGlow)"/>
+
+  <!-- 山峰层 - 近景（主山体） -->
+  <path d="M 115 290 Q 155 235 185 265 Q 215 235 245 255 Q 275 225 285 290 L 285 340 L 115 340 Z" 
+        fill="url(#mountainGradient)" filter="url(#strongGlow)"/>
+
+  <!-- 山体裂缝/断层线 -->
+  <path d="M 155 270 L 170 280 L 160 290 L 175 300" fill="none" stroke="#dc2626" stroke-width="4" stroke-linecap="round" filter="url(#strongGlow)"/>
+  <path d="M 225 260 L 240 270 L 230 285" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" filter="url(#mediumGlow)"/>
+
+  <!-- 警示标记 -->
+  <polygon points="200,125 218,165 182,165" fill="url(#warningGradient)" filter="url(#strongGlow)"/>
+  <text x="200" y="158" text-anchor="middle" fill="#92400e" font-size="20" font-weight="bold" font-family="Arial">!</text>
+
+  <!-- 数据流动线条 -->
+  <path d="M 70 200 Q 110 180 150 200 T 230 200" fill="none" stroke="url(#dataGradient)" stroke-width="3" opacity="0.9" filter="url(#mediumGlow)">
+    <animate attributeName="stroke-dasharray" values="0 100;100 0" dur="2s" repeatCount="indefinite"/>
+  </path>
+  <path d="M 330 200 Q 290 220 250 200 T 170 200" fill="none" stroke="url(#dataGradient)" stroke-width="3" opacity="0.9" filter="url(#mediumGlow)">
+    <animate attributeName="stroke-dasharray" values="0 100;100 0" dur="2s" begin="1s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- 监测点 -->
+  <circle cx="155" cy="240" r="5" fill="#f87171" filter="url(#strongGlow)">
+    <animate attributeName="r" values="5;8;5" dur="1.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0.6;1" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="245" cy="230" r="5" fill="#f87171" filter="url(#strongGlow)">
+    <animate attributeName="r" values="5;8;5" dur="1.5s" begin="0.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0.6;1" dur="1.5s" begin="0.5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- 中心智控核心 -->
+  <circle cx="200" cy="200" r="28" fill="rgba(15,23,42,0.6)" stroke="#06b6d4" stroke-width="3" filter="url(#strongGlow)"/>
+  <circle cx="200" cy="200" r="18" fill="#06b6d4" opacity="0.9" filter="url(#mediumGlow)">
+    <animate attributeName="r" values="18;22;18" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- 核心内部图标 - 盾牌+数据 -->
+  <path d="M 200 188 L 210 194 L 210 206 Q 200 214 190 206 L 190 194 Z" fill="rgba(15,23,42,0.7)"/>
+  <rect x="196" y="195" width="8" height="2.5" fill="#06b6d4"/>
+  <rect x="196" y="200" width="8" height="2.5" fill="#06b6d4"/>
+  <rect x="196" y="205" width="5" height="2.5" fill="#06b6d4"/>
+
+  <!-- 外围数据节点 -->
+  <circle cx="200" cy="85" r="7" fill="#60a5fa" opacity="1" filter="url(#mediumGlow)"/>
+  <circle cx="315" cy="200" r="7" fill="#60a5fa" opacity="1" filter="url(#mediumGlow)"/>
+  <circle cx="200" cy="315" r="7" fill="#60a5fa" opacity="1" filter="url(#mediumGlow)"/>
+  <circle cx="85" cy="200" r="7" fill="#60a5fa" opacity="1" filter="url(#mediumGlow)"/>
+
+  <!-- 连接线 -->
+  <line x1="200" y1="108" x2="200" y2="172" stroke="#60a5fa" stroke-width="2" opacity="0.9"/>
+  <line x1="228" y1="200" x2="308" y2="200" stroke="#60a5fa" stroke-width="2" opacity="0.9"/>
+  <line x1="200" y1="228" x2="200" y2="308" stroke="#60a5fa" stroke-width="2" opacity="0.9"/>
+  <line x1="92" y1="200" x2="172" y2="200" stroke="#60a5fa" stroke-width="2" opacity="0.9"/>
+</svg>
